@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{35feebdd-3c3d-4297-a36f-c277d42d8b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{631a4c54-abc5-481d-9c16-d724c0661db8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -21,17 +27,32 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="libTicTacToe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Header Files</Filter>
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="AlgoTrainerFactory.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Episode.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtificialIntelligence.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="SARSAIntelligence.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="QlearningIntelligence.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGuesser.h">
+      <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,10 +66,28 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="AlgoTrainerFactory.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Episode.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtificialIntelligence.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="QlearningIntelligence.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="SARSAIntelligence.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGuesser.cpp">
+      <Filter>AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

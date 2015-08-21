@@ -19,8 +19,7 @@ void run(OPTIONS& options)
 		std::cout << "Please select from the following options:" << std::endl;
 		std::cout << "1: Train (auto)" << std::endl;
 		std::cout << "2: Load" << std::endl;
-		std::cout << "3: Save" << std::endl;
-		std::cout << "4: Play" << std::endl;
+		std::cout << "3: Play" << std::endl;
 
 		std::cin >> usrInput;
 
@@ -47,20 +46,21 @@ void run(OPTIONS& options)
 
 int main(int argc, char* argv[])
 {
-	try {
-
-		auto options = getOptions(argc, argv);
-
-		initLogging(options._logFilePath);
-
-		run(options);
-
+	OPTIONS options;
+	try 
+	{
+		options = getOptions(argc, argv);
 	}
 	catch (...)
 	{
 		std::cout << "Invalid commandline" << std::endl;
 		std::cout << "usage: -i<num_iterations> -o<log_file_path> -a<algorithm>" << std::endl;
 	}
+
+	initLogging(options._logFilePath);
+
+	run(options);
+
     return 0;
 }
 

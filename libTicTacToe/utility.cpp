@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "libTicTacToe.h"
 
+class CAutoPlayer;
+
 namespace libTicTacToe
 {
 	static std::ofstream g_logOs;
@@ -51,4 +53,9 @@ namespace libTicTacToe
 			std::clog.rdbuf(g_logOs.rdbuf());
 		}
 	}
+
+	void save(CAutoPlayer& player1)
+	{
+		
+	};
 }

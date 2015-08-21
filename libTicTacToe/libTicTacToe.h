@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include <string>
+#include "Player.h"
 
 namespace libTicTacToe
 {
@@ -12,7 +13,7 @@ namespace libTicTacToe
 	};
 
 	struct OPTIONS {
-		int _numEpisodes;
+		size_t _numEpisodes;
 		ALGO _algo;
 		std::string _logFilePath;
 	};
@@ -22,4 +23,7 @@ namespace libTicTacToe
 	void train(OPTIONS& options);
 
 	void initLogging(std::string filePath);
+
+	void save(CAutoPlayer& player);
+
 }

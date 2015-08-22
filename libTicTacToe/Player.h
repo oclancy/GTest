@@ -35,5 +35,18 @@ private:
 	CArtificialIntelligence& _ai;
 };
 
+class CManualPlayer : public CPlayer
+{
+public:
+	CManualPlayer(char token)
+		: CPlayer(token)
+	{}
+
+	void TakeTurn(CBoard& board) override final;
+	void Learn(int reward) override final;
+
+
+};
+
 
 

@@ -18,8 +18,7 @@ void run(OPTIONS& options)
 
 		std::cout << "Please select from the following options:" << std::endl;
 		std::cout << "1: Train (auto)" << std::endl;
-		std::cout << "2: Load" << std::endl;
-		std::cout << "3: Play" << std::endl;
+		std::cout << "2: Play" << std::endl;
 
 		std::cin >> usrInput;
 
@@ -37,6 +36,10 @@ void run(OPTIONS& options)
 		{
 		case 1:
 			train(options);
+			break;
+		case 2:
+			play();
+			break;
 		default:
 			std::cout << "Invalid option:" << selection << std::endl;
 			break;

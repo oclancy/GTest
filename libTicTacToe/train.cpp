@@ -2,15 +2,18 @@
 #include "libTicTacToe.h"
 #include "Player.h"
 #include "Episode.h"
-#include "ArtificialIntelligence.h"
 #include "RandomGuesser.h"
+#include "QlearningIntelligence.h"
 
 namespace libTicTacToe
 {
 	void train(OPTIONS& options)
 	{
-		CRandomGuesser guesser{CModel()};
-		CRandomGuesser guesser2{ CModel() };
+		//CRandomGuesser guesser;
+		//CRandomGuesser guesser2;
+
+		CQLearningIntelligence guesser;
+		CQLearningIntelligence guesser2;
 
 		CAutoPlayer player1('x', guesser);
 		CAutoPlayer player2('o', guesser2);
@@ -23,7 +26,17 @@ namespace libTicTacToe
 		std::string input;
 		std::cin >> input;
 
-		if(tolower(input[0]) == 'y' )
-			save(player1);
+		if (tolower(input[0]) == 'y')
+		{
+			std::string filename;
+			std::cout << "Enter filename player1:" << std::endl;
+			std::cin >> filename;
+			guesser.Save(filename);
+			
+			std::cout << "Enter filename player2:" << std::endl;
+			std::cin >> filename;
+			guesser2.Save(filename);
+		}
 	}
+
 }

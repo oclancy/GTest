@@ -42,9 +42,6 @@
     <ClInclude Include="ArtificialIntelligence.h">
       <Filter>AI</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>AI</Filter>
-    </ClInclude>
     <ClInclude Include="SARSAIntelligence.h">
       <Filter>AI</Filter>
     </ClInclude>
@@ -74,12 +71,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="ArtificialIntelligence.cpp">
-      <Filter>AI</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>AI</Filter>
-    </ClCompile>
     <ClCompile Include="QlearningIntelligence.cpp">
       <Filter>AI</Filter>
     </ClCompile>
@@ -88,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="RandomGuesser.cpp">
       <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="play.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,8 +2,11 @@
 class CRandomGuesser : public CArtificialIntelligence
 {
 public:
-	explicit CRandomGuesser(CModel& model)
-		:CArtificialIntelligence(model) {}
+	virtual int SelectSquare(const std::string state, const std::vector<int>& availableSquares) override final;
 
-	virtual int SelectSquare(const std::vector<int>& availableSquares) const override final;
+	virtual void UpdateStrategy(int reward) override final;
+
+	void Load(const std::string& filename)  override final {};
+
+	void Save(const std::string& filename)  override final {};
 };

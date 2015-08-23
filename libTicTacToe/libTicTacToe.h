@@ -1,12 +1,15 @@
 #pragma once
-
-#include <stdio.h>
-#include <tchar.h>
-#include <string>
-#include "Player.h"
+#include "ArtificialIntelligence.h"
+#include <memory>
 
 namespace libTicTacToe
 {
+	const int INVALID_SQUARE = -1;
+
+	const int WIN = 100;
+	const int LOSE = -100;
+	const int DRAW = -10;
+
 	enum ALGO {
 		Q,
 		SARSA
@@ -18,15 +21,17 @@ namespace libTicTacToe
 		std::string _logFilePath;
 	};
 
-	OPTIONS getOptions(int argc, char* argv[]);
+	//OPTIONS getOptions(int argc, char* argv[]);
 
-	void train(OPTIONS& options);
+	void Train();
 
-	void play();
+	void Play();
 
-	void initLogging(std::string filePath);
+	//void initLogging(std::string filePath);
 
-	std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems);
+	std::vector<std::string>& Split(const std::string &s, char delim, std::vector<std::string> &elems);
 
-	std::vector<std::string> split(const std::string &s, char delim);
+	std::vector<std::string> Split(const std::string &s, char delim);
+
+	std::unique_ptr<CArtificialIntelligence> GetArtificialIntelligence(const char id);
 }

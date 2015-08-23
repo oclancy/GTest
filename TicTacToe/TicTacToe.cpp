@@ -7,7 +7,10 @@
 
 using namespace libTicTacToe;
 
-void run(OPTIONS& options)
+/// <summary>
+/// Runs the program.
+/// </summary>
+void Run()
 {
 	std::string usrInput("x");
 	int selection;
@@ -28,17 +31,17 @@ void run(OPTIONS& options)
 		}
 		catch (std::invalid_argument& exception)
 		{
-			std::cout << "Invalid selection:" << selection << std::endl;
+			std::cout << "Invalid selection:" << exception.what() << std::endl;
 			continue;
 		}
 
 		switch (selection)
 		{
 		case 1:
-			train(options);
+			Train();
 			break;
 		case 2:
-			play();
+			Play();
 			break;
 		default:
 			std::cout << "Invalid option:" << selection << std::endl;
@@ -49,20 +52,21 @@ void run(OPTIONS& options)
 
 int main(int argc, char* argv[])
 {
-	OPTIONS options;
-	try 
-	{
-		options = getOptions(argc, argv);
-	}
-	catch (...)
-	{
-		std::cout << "Invalid commandline" << std::endl;
-		std::cout << "usage: -i<num_iterations> -o<log_file_path> -a<algorithm>" << std::endl;
-	}
+	//OPTIONS options;
+	//try 
+	//{
+	//	options = getOptions(argc, argv);
+	//}
+	//catch (...)
+	//{
+	//	std::cout << "Invalid commandline" << std::endl;
+	//	std::cout << "usage: -i<num_iterations> -o<log_file_path> -a<algorithm>" << std::endl;
+	//}
 
-	initLogging(options._logFilePath);
+	//if(options._logFilePath != "")
+	//	initLogging(options._logFilePath);
 
-	run(options);
+	Run();
 
     return 0;
 }

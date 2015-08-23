@@ -1,10 +1,12 @@
 #pragma once
 #include "Player.h"
-#include "Board.h"
 
-class CEpisode
+namespace libTicTacToe
 {
-public:
-	static void Play(CPlayer& player1, CPlayer& player2);
-};
+	class CEpisode
+	{
+	public:
+		static void Play(CPlayer& player1, CPlayer& player2);
+	};
 
+}

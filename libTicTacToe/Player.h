@@ -2,51 +2,52 @@
 #include "Board.h"
 #include "ArtificialIntelligence.h"
 
-class CPlayer
+namespace libTicTacToe
 {
-protected:
-	CPlayer(char token) :_token(token) {};
-
-public:
-	virtual ~CPlayer()
+	class CPlayer
 	{
-	}
+	protected:
+		CPlayer(char token) :_token(token) {};
 
-	virtual void TakeTurn(CBoard& board) = 0;
-	virtual void Learn(int reward)=0;
+	public:
+		virtual ~CPlayer()
+		{
+		}
 
-	char GetToken() const { return _token; };
+		virtual void TakeTurn(CBoard& board) = 0;
+		virtual void Learn(int reward) = 0;
 
-protected:
-	char _token;
-};
+		char GetToken() const { return _token; };
 
-class CAutoPlayer : public CPlayer
-{
-public:
-	CAutoPlayer(char token, CArtificialIntelligence& ai)
-		: CPlayer(token),_ai(ai)
-			{}
+	protected:
+		char _token;
+	};
 
-	void TakeTurn(CBoard& board) override final;
-	void Learn(int reward) override final;
+	class CAutoPlayer : public CPlayer
+	{
+	public:
+		CAutoPlayer(char token, CArtificialIntelligence& ai)
+			: CPlayer(token), _ai(ai)
+		{}
 
-private:
-	CArtificialIntelligence& _ai;
-};
+		void TakeTurn(CBoard& board) override final;
+		void Learn(int reward) override final;
 
-class CManualPlayer : public CPlayer
-{
-public:
-	CManualPlayer(char token)
-		: CPlayer(token)
-	{}
+	private:
+		CArtificialIntelligence& _ai;
+	};
 
-	void TakeTurn(CBoard& board) override final;
-	void Learn(int reward) override final;
+	class CManualPlayer : public CPlayer
+	{
+	public:
+		CManualPlayer(char token)
+			: CPlayer(token)
+		{}
 
-
-};
-
+		void TakeTurn(CBoard& board) override final;
+		void Learn(int reward) override final;
 
 
+	};
+
+}

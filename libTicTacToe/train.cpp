@@ -1,42 +1,65 @@
 #include "stdafx.h"
+#include <memory>
 #include "libTicTacToe.h"
 #include "Player.h"
 #include "Episode.h"
-#include "RandomGuesser.h"
-#include "QlearningIntelligence.h"
 
 namespace libTicTacToe
 {
-	void train(OPTIONS& options)
+	void Train()
 	{
-		//CRandomGuesser guesser;
-		//CRandomGuesser guesser2;
+		char choice;
 
-		CQLearningIntelligence guesser;
-		CQLearningIntelligence guesser2;
+		std::cout << "Please select algorithm to train for player 1: (s)arsa, (q)learning, (r)andomguesser (default)" << std::endl;
+		std::cin >> choice;
 
-		CAutoPlayer player1('x', guesser);
-		CAutoPlayer player2('o', guesser2);
+		auto ai1 = GetArtificialIntelligence(tolower(choice));
 
-		for (size_t count=0; count < options._numEpisodes; ++ count )
+		CAutoPlayer player1('x', *ai1);
+
+		std::cout << "Please select algorithm to train for player 2: (s)arsa, (q)learning, (r)andomguesser (default)" << std::endl;
+		std::cin >> choice;
+
+		auto ai2 = GetArtificialIntelligence(tolower(choice));
+		CAutoPlayer player2('o', *ai2);
+
+		std::cout << "Please select number of training episodes: ";
+		size_t iterations;
+		std::cin >> iterations;
+
+		for (size_t count=0; count < iterations; ++ count )
 			CEpisode::Play(player1, player2);
 
 		std::cout << "Training session finished. Save? (y/n)";
 
-		std::string input;
-		std::cin >> input;
+		std::cin >> choice;
 
-		if (tolower(input[0]) == 'y')
+		if (tolower(choice) == 'y')
 		{
 			std::string filename;
 			std::cout << "Enter filename player1:" << std::endl;
 			std::cin >> filename;
-			guesser.Save(filename);
+			ai1->Save(filename);
 			
 			std::cout << "Enter filename player2:" << std::endl;
 			std::cin >> filename;
-			guesser2.Save(filename);
+			ai2->Save(filename);
+		}
+
+		std::cout << "Output reward/episode log? (y/n)";
+
+		std::cin >> choice;
+
+		if (tolower(choice) == 'y')
+		{
+			std::string filename;
+			std::cout << "Enter filename player1:" << std::endl;
+			std::cin >> filename;
+			ai1->Save(filename);
+
+			std::cout << "Enter filename player2:" << std::endl;
+			std::cin >> filename;
+			ai2->Save(filename);
 		}
 	}
-
 }

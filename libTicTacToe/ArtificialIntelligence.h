@@ -1,26 +1,58 @@
 #pragma once
-#include <vector>
-#include <tuple>
+#include <random>
 
-class CArtificialIntelligence
+namespace libTicTacToe
 {
-protected:
-	typedef std::vector<std::tuple<std::string, int>> Moves;
-	// move log per episode
-	Moves _moves;
+	/// <summary>
+	/// Abstract base class of ais
+	/// </summary>
+	class CArtificialIntelligence
+	{
+	protected:
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CArtificialIntelligence"/> class.
+		/// </summary>
+		CArtificialIntelligence()
+			:_generator(_rd())
+		{
+		}
 
-public:
-	CArtificialIntelligence() {};
-		
-	virtual ~CArtificialIntelligence() {};
+		std::random_device _rd;
+		std::mt19937 _generator;
 
-	virtual int SelectSquare(const std::string state, const std::vector<int>& availableSquares) = 0;
+	public:
 
-	virtual void UpdateStrategy(int reward) = 0;
+		/// <summary>
+		/// Finalizes an instance of the <see cref="CArtificialIntelligence"/> class.
+		/// </summary>
+		virtual ~CArtificialIntelligence() {};
 
-	virtual void Load(const std::string& filename) = 0;
-	
-	virtual void Save(const std::string& filename) = 0;
-};
+		/// <summary>
+		/// Selects the square.
+		/// </summary>
+		/// <param name="state">The state.</param>
+		/// <param name="availableSquares">The available squares.</param>
+		/// <returns></returns>
+		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) = 0;
+
+		/// <summary>
+		/// Updates the strategy.
+		/// </summary>
+		/// <param name="reward">The reward.</param>
+		virtual void UpdateStrategy(int reward) = 0;
+
+		/// <summary>
+		/// Loads the specified filename.
+		/// </summary>
+		/// <param name="filename">The filename.</param>
+		virtual void Load(const std::string& filename) = 0;
+
+		/// <summary>
+		/// Saves the specified filename.
+		/// </summary>
+		/// <param name="filename">The filename.</param>
+		virtual void Save(const std::string& filename) = 0;
+	};
 
 
+}

@@ -13,12 +13,18 @@ namespace libTicTacToe
 		/// Initializes a new instance of the <see cref="CArtificialIntelligence"/> class.
 		/// </summary>
 		CArtificialIntelligence()
-			:_generator(_rd())
+			:_generator(_rd()), _average_reward(0), _iterations(0)
 		{
 		}
 
+		// random number generation
 		std::random_device _rd;
 		std::mt19937 _generator;
+
+		// current average
+		double _average_reward;
+		//itereations played
+		int _iterations;
 
 	public:
 
@@ -52,6 +58,20 @@ namespace libTicTacToe
 		/// </summary>
 		/// <param name="filename">The filename.</param>
 		virtual void Save(const std::string& filename) = 0;
+
+		/// <summary>
+		/// Gets the average reward.
+		/// </summary>
+		/// <returns></returns>
+		double GetAverageReward() const { return _average_reward; };
+
+	protected:
+		void UpdateRewardAverage(double reward)
+		{
+			//update average
+			auto temp = _average_reward*_iterations + reward;
+			_average_reward = temp / (++_iterations);
+		}
 	};
 
 

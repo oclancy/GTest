@@ -4,59 +4,48 @@
 #include <memory>
 #include "SARSAIntelligence.h"
 #include "QlearningIntelligence.h"
-
-class CAutoPlayer;
+#include <time.h>
 
 namespace libTicTacToe
 {
-	//static std::ofstream g_logOs;
 
-	//void Log(std::string& message)
-	//{
-	//	std::clog << message;
-	//}
+	/// <summary>
+	/// Saves the rewards per episodes.
+	/// </summary>
+	/// <param name="ai1">The ai1.</param>
+	/// <param name="ai2">The ai2.</param>
+	void SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2)
+	{
+		time_t rawtime;
+		struct tm timeinfo;
+		char buffer[80];
 
-	//OPTIONS getOptions(int argc, char* argv[])
-	//{
-	//	OPTIONS retVal;
-	//	for (auto param = 1; param < argc; ++param)
-	//	{
-	//		if (argv[param][0] == '-')
-	//		{
-	//			switch (argv[param][1])
-	//			{
-	//			case 'o':
-	//				retVal._logFilePath = argv[param] + 2;
-	//				break;
-	//			//case 'i':
-	//			//	retVal._numEpisodes = std::atoi(argv[param] + 2);
-	//			//	break;
-	//			//case 'a':
-	//			//	retVal._algo = (ALGO)std::atoi(argv[param] + 2);
-	//			//	break;
-	//			default:
-	//				char buffer[100];
-	//				snprintf(buffer, 100, "Unknown parameter %c", argv[param][1]);
-	//				throw std::exception(buffer);
-	//			}
-	//		}
-	//	}
+		time(&rawtime);
+		localtime_s(&timeinfo, &rawtime);
 
-	//	return retVal;
-	//}
+		strftime(buffer, 25, "%F-%H%M%S.plot", &timeinfo);
 
-	//void initLogging(std::string filePath)
-	//{
-	//	if (!g_logOs.is_open())
-	//	{
-	//		g_logOs.open(filePath, std::ofstream::out | std::ofstream::app);
+		std::ofstream file(buffer, std::ios::out);
 
-	//		if (g_logOs.fail())
-	//			throw std::invalid_argument(filePath);
+		std::stringstream ai1_out_string;
+		std::stringstream ai2_out_string;
 
-	//		std::clog.rdbuf(g_logOs.rdbuf());
-	//	}
-	//}
+		for (auto reward : ai1)
+			ai1_out_string << reward << ",";
+		for (auto reward : ai2)
+			ai2_out_string << reward << ",";
+
+		if (file.is_open())
+		{
+			file << ai1_out_string.rdbuf() << std::endl;
+			file << ai2_out_string.rdbuf() << std::endl;
+			file.close();
+		}
+		else
+		{
+			std::cout << "Unable to open file" << std::endl;
+		}
+	}
 
 	/// <summary>
 	/// Splits the specified string using the delimiter.

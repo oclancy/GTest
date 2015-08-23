@@ -12,7 +12,6 @@ namespace libTicTacToe
 	/// <returns></returns>
 	int CQLearningIntelligence::SelectSquare(const std::string state, const std::vector<int>& available_squares)
 	{
-
 		auto square = libTicTacToe::INVALID_SQUARE;
 		auto iter = _strategy.find(state);
 
@@ -67,6 +66,9 @@ namespace libTicTacToe
 	void CQLearningIntelligence::UpdateStrategy(int reward)
 	{
 		auto dreward = static_cast<double>(reward);
+
+		UpdateRewardAverage(dreward);
+
 		auto rit = _movesInEpisode.rbegin();
 		for (; rit != _movesInEpisode.rend(); ++rit)
 		{

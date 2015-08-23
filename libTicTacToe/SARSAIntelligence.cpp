@@ -73,7 +73,10 @@ namespace libTicTacToe
 	/// <param name="reward">The reward.</param>
 	void CSarsaIntelligence::UpdateStrategy(int reward)
 	{
-		auto dReward = static_cast<double>(reward);
+		auto dreward = static_cast<double>(reward);
+		
+		UpdateRewardAverage(dreward);
+
 		auto rit = _movesInEpisode.rbegin();
 
 		auto move = *rit;
@@ -103,7 +106,7 @@ namespace libTicTacToe
 						auto existing_value = state_action_value->value;
 						//dReward = existing_value + 0.1 * (dReward * 0.9 - existing_value);
 						//existing_value = dReward;
-						state_action_value->value = existing_value + 0.1 * (dReward * 0.9 - existing_value);
+						state_action_value->value = existing_value + 0.1 * (dreward * 0.9 - existing_value);
 						break;
 					}
 				}
@@ -111,7 +114,7 @@ namespace libTicTacToe
 				if (!bFound)
 				{
 					//dReward = 0.1 * (dReward * 0.9);
-					auto value = 0.1 * (dReward * 0.9);
+					auto value = 0.1 * (dreward * 0.9);
 					auto newStateActionValue = std::make_shared<StateActionValue>(searchState, searchAction, value);
 					existing_state_action_iter->second.push_back(newStateActionValue);
 				}
@@ -120,7 +123,7 @@ namespace libTicTacToe
 			{
 				StateActionValueVector vector_of_state_action_values;
 				//dReward = 0.1 * (dReward * 0.9);
-				auto value = 0.1 * (dReward * 0.9);
+				auto value = 0.1 * (dreward * 0.9);
 				vector_of_state_action_values.push_back(std::make_shared<StateActionValue>(std::get<0>(move), std::get<1>(move), value));
 				_strategy.emplace(StateAction(std::get<0>(from), std::get<1>(from)), vector_of_state_action_values);
 			}

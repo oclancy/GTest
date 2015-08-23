@@ -22,6 +22,7 @@ void Run()
 		std::cout << "Please select from the following options:" << std::endl;
 		std::cout << "1: Train (auto)" << std::endl;
 		std::cout << "2: Play" << std::endl;
+		std::cout << "3: Quit" << std::endl;
 
 		std::cin >> usrInput;
 
@@ -43,6 +44,8 @@ void Run()
 		case 2:
 			Play();
 			break;
+		case 3:
+			return;
 		default:
 			std::cout << "Invalid option:" << selection << std::endl;
 			break;

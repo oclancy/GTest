@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "libTicTacToe.h"
 #include "SARSAIntelligence.h"
 
 namespace libTicTacToe

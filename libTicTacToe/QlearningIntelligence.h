@@ -4,8 +4,6 @@
 #include "ArtificialIntelligence.h"
 namespace libTicTacToe
 {
-
-
 	class CQLearningIntelligence : public CArtificialIntelligence
 	{
 	public:

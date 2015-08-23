@@ -23,7 +23,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="unittest1.cpp">
+    <ClCompile Include="When_Using_CQLearningIntelligence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="When_Using_SarsaIntelligence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

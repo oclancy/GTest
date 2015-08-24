@@ -14,50 +14,50 @@ namespace libTicTacToeTest
 	{
 	public:
 
-		const char _drawBoard[9] = {'o','o', 'x', 'x', 'x', 'o', 'o', 'o', 'x'};
+		const char _draw_board[9] = {'o','o', 'x', 'x', 'x', 'o', 'o', 'o', 'x'};
 		
 		TEST_METHOD(Can_Select_Square)
 		{
-			CBoard testBoard;
+			CBoard test_board;
 			
-			Assert::AreEqual(std::string(9, CBoard::SPACE), testBoard.GetState());
+			Assert::AreEqual(std::string(9, CBoard::SPACE), test_board.GetState());
 
 			// set all squares
 			for (unsigned int index = 0;index < 9;++index)
 			{
-				Assert::IsTrue(testBoard.SetSquare(_drawBoard[index], index));
+				Assert::IsTrue(test_board.SetSquare(_draw_board[index], index));
 
 				if(index != 8)
-					Assert::IsFalse(testBoard.IsFinished());
+					Assert::IsFalse(test_board.IsFinished());
 			}
-			Assert::AreEqual(std::string(_drawBoard), testBoard.GetState());
+			Assert::AreEqual(std::string(_draw_board), test_board.GetState());
 			
-			Assert::IsTrue(testBoard.IsFinished());
+			Assert::IsTrue(test_board.IsFinished());
 
 			// can't set set square
 			for (auto index = 0;index < 9;++index)
 			{
-				Assert::IsFalse(testBoard.SetSquare('z', index));
+				Assert::IsFalse(test_board.SetSquare('z', index));
 			}
 
-			Assert::AreEqual(std::string(_drawBoard), testBoard.GetState());
+			Assert::AreEqual(std::string(_draw_board), test_board.GetState());
 
 		}
 
 		TEST_METHOD(Cant_Select_Square_Out_Of_Bounds)
 		{
-			CBoard testBoard;
+			CBoard test_board;
 
-			Assert::AreEqual(std::string( 9, CBoard::SPACE ), testBoard.GetState());
+			Assert::AreEqual(std::string( 9, CBoard::SPACE ), test_board.GetState());
 
-			Assert::IsFalse(testBoard.SetSquare('x', 9));
+			Assert::IsFalse(test_board.SetSquare('x', 9));
 		}
 
 		TEST_METHOD(Can_Get_State)
 		{
-			CBoard testBoard;
+			CBoard test_board;
 
-			Assert::AreEqual(std::string(9, CBoard::SPACE), testBoard.GetState());
+			Assert::AreEqual(std::string(9, CBoard::SPACE), test_board.GetState());
 		}
 
 		TEST_METHOD(Can_Get_Available_Squares)
@@ -68,7 +68,7 @@ namespace libTicTacToeTest
 
 			for (unsigned int index = 0;index < 9;++index )
 			{
-				Assert::IsTrue(testBoard.SetSquare(_drawBoard[index], index));
+				Assert::IsTrue(testBoard.SetSquare(_draw_board[index], index));
 				Assert::AreEqual(8-index, testBoard.GetAvailableSquares().size());
 			}
 		}
@@ -80,7 +80,7 @@ namespace libTicTacToeTest
 			//345
 			//678
 
-			std::vector<std::vector<int>> winStates{ 
+			std::vector<std::vector<int>> win_states{ 
 				{ 0,1,2 }, // row 0
 				{ 3,4,5 }, // row 1
 				{ 6,7,8 }, // row 2
@@ -91,10 +91,10 @@ namespace libTicTacToeTest
 				{ 2,4,6 }, // diag r-l
 			};
 
-			for( auto winState : winStates)
+			for( auto win_state : win_states)
 			{
 				CBoard board;
-				for(auto square : winState)
+				for(auto square : win_state)
 				{
 					board.SetSquare('x', square);
 				}
@@ -122,17 +122,17 @@ namespace libTicTacToeTest
 
 		TEST_METHOD(Can_Get_Reward_Draw)
 		{
-			CBoard testBoard;
+			CBoard test_board;
 			// set all squares
 			for (unsigned int index = 0;index < 9;++index)
 			{
-				Assert::IsTrue(testBoard.SetSquare(_drawBoard[index], index));
+				Assert::IsTrue(test_board.SetSquare(_draw_board[index], index));
 			}
-			Assert::AreEqual(std::string(_drawBoard), testBoard.GetState());
+			Assert::AreEqual(std::string(_draw_board), test_board.GetState());
 
-			Assert::AreEqual(CBoard::SPACE, testBoard.GetWinner());
-			Assert::AreEqual(-10, testBoard.GetReward('x'));
-			Assert::AreEqual(-10, testBoard.GetReward('o'));
+			Assert::AreEqual(CBoard::SPACE, test_board.GetWinner());
+			Assert::AreEqual(-10, test_board.GetReward('x'));
+			Assert::AreEqual(-10, test_board.GetReward('o'));
 		}
 	};
 }

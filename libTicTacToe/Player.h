@@ -25,6 +25,7 @@ namespace libTicTacToe
 		}
 
 		virtual void TakeTurn(CBoard& board) = 0;
+
 		virtual void Learn(int reward) = 0;
 
 		/// <summary>
@@ -34,6 +35,9 @@ namespace libTicTacToe
 		char GetToken() const { return _token; };
 
 	protected:
+		/// <summary>
+		/// The _token of the player on the board
+		/// </summary>
 		const char _token;
 	};
 

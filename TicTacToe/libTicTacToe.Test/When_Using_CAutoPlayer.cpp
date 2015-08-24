@@ -11,7 +11,7 @@ namespace libTicTacToeTest
 	using namespace libTicTacToe;
 
 	/// <summary>
-	/// Mock ASI class t help with testing
+	/// Mock AI class to help with testing
 	/// </summary>
 	class MockAi : public CArtificialIntelligence
 	{
@@ -19,12 +19,22 @@ namespace libTicTacToeTest
 		int _updateStrategyReward;
 		bool _selectSquareCalled;
 		
+		/// <summary>
+		/// Selects the square.
+		/// </summary>
+		/// <param name="state">The state.</param>
+		/// <param name="availableSquares">The available squares.</param>
+		/// <returns></returns>
 		virtual int SelectSquare(const std::string state, const std::vector<int>& availableSquares) override final
 		{
 			_selectSquareCalled = true;
 			return 1;
 		};
 
+		/// <summary>
+		/// Updates the strategy.
+		/// </summary>
+		/// <param name="reward">The reward.</param>
 		virtual void UpdateStrategy(int reward) override final
 		{
 			_updateStrategyReward = reward;
@@ -50,32 +60,32 @@ namespace libTicTacToeTest
 				
 		TEST_METHOD(Can_Take_Turn)
 		{
-			CBoard testBoard;
-			MockAi testAi;
-			CAutoPlayer testPlayer('x', testAi);
+			CBoard test_board;
+			MockAi test_ai;
+			CAutoPlayer test_player('x', test_ai);
 
-			testPlayer.TakeTurn(testBoard);
+			test_player.TakeTurn(test_board);
 
-			Assert::AreEqual(std::string(" x       "), testBoard.GetState());
-			Assert::IsTrue(testAi._selectSquareCalled);
+			Assert::AreEqual(std::string(" x       "), test_board.GetState());
+			Assert::IsTrue(test_ai._selectSquareCalled);
 		}
 
 		TEST_METHOD(Can_Update_Ai)
 		{
-			MockAi testAi;
-			CAutoPlayer testPlayer('x', testAi);
+			MockAi test_ai;
+			CAutoPlayer test_player('x', test_ai);
 
-			testPlayer.Learn(1);
+			test_player.Learn(1);
 
-			Assert::AreEqual(1, testAi._updateStrategyReward);
+			Assert::AreEqual(1, test_ai._updateStrategyReward);
 		}
 
 		TEST_METHOD(Can_Get_Token)
 		{
-			MockAi testAi;
-			CAutoPlayer testPlayer('x', testAi);
+			MockAi test_ai;
+			CAutoPlayer test_player('x', test_ai);
 
-			Assert::AreEqual('x', testPlayer.GetToken());
+			Assert::AreEqual('x', test_player.GetToken());
 		}
 
 	};

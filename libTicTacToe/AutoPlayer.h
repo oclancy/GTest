@@ -4,7 +4,7 @@
 namespace libTicTacToe
 {
 	/// <summary>
-	/// Implementation of CPlyaer that uses an AI instance to play the game.
+	/// Implementation of CPlayer that uses an AI instance to play the game.
 	/// </summary>
 	class CAutoPlayer : public CPlayer
 	{

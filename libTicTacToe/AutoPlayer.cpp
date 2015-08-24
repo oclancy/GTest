@@ -3,7 +3,6 @@
 
 namespace libTicTacToe
 {
-	
 	/// <summary>
 	/// Takes the turn.
 	/// </summary>

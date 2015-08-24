@@ -12,8 +12,7 @@ namespace libTicTacToe
 	{
 	private:
 		typedef std::tuple<std::string, int> StateAction;
-		//typedef std::tuple<StateAction, double> StateActionValue;
-
+		
 		struct StateActionValue
 		{
 			StateActionValue(std::string s, int a, double v)
@@ -25,16 +24,6 @@ namespace libTicTacToe
 			int action;
 			double value;
 		};
-
-		//struct StateAction
-		//{
-		//	StateAction(std::string s, int a)
-		//		:state(s),
-		//		action(a){}
-
-		//	std::string state;
-		//	int action;
-		//};
 
 		typedef std::vector<std::shared_ptr<StateActionValue>> StateActionValueVector;
 		

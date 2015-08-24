@@ -9,8 +9,14 @@ namespace libTicTacToe
 	class CBoard
 	{
 	public:
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CBoard"/> class.
+		/// </summary>
 		CBoard() :_current_state(9, SPACE) {};
 
+		/// <summary>
+		/// Finalizes an instance of the <see cref="CBoard"/> class.
+		/// </summary>
 		~CBoard() {};
 
 		bool SetSquare(char token, int position);
@@ -27,14 +33,26 @@ namespace libTicTacToe
 
 		char GetWinner() const { return _winner; };
 
+		/// <summary>
+		/// The represents a free square
+		/// </summary>
 		static const char SPACE = ' ';
 	
 	private:
-		
+				
+		/// <summary>
+		/// The _current_state
+		/// </summary>
 		std::string _current_state;
 
+		/// <summary>
+		/// Whether the games is playable
+		/// </summary>
 		bool _is_finished = false;
 
+		/// <summary>
+		/// The _winner default is DRAW value
+		/// </summary>
 		char _winner = SPACE;
 	};
 

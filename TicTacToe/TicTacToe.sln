@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TicTacToe", "TicTacToe.vcxproj", "{D0C3DDCB-416C-429F-9453-44FA1FB249AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9} = {C4DA119A-5EC6-484C-A361-C2CE109CDEF9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libTicTacToe", "..\libTicTacToe\libTicTacToe.vcxproj", "{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libTicTacToe.Test", "libTicTacToe.Test\libTicTacToe.Test.vcxproj", "{085E348C-B26D-4581-9150-105976F0B173}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9} = {C4DA119A-5EC6-484C-A361-C2CE109CDEF9}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Debug|x64.ActiveCfg = Debug|x64
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Debug|x64.Build.0 = Debug|x64
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Debug|x86.ActiveCfg = Debug|Win32
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Debug|x86.Build.0 = Debug|Win32
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Release|x64.ActiveCfg = Release|x64
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Release|x64.Build.0 = Release|x64
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Release|x86.ActiveCfg = Release|Win32
+		{D0C3DDCB-416C-429F-9453-44FA1FB249AA}.Release|x86.Build.0 = Release|Win32
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Debug|x64.ActiveCfg = Debug|x64
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Debug|x64.Build.0 = Debug|x64
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Debug|x86.Build.0 = Debug|Win32
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Release|x64.ActiveCfg = Release|x64
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Release|x64.Build.0 = Release|x64
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Release|x86.ActiveCfg = Release|Win32
+		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9}.Release|x86.Build.0 = Release|Win32
+		{085E348C-B26D-4581-9150-105976F0B173}.Debug|x64.ActiveCfg = Debug|x64
+		{085E348C-B26D-4581-9150-105976F0B173}.Debug|x64.Build.0 = Debug|x64
+		{085E348C-B26D-4581-9150-105976F0B173}.Debug|x86.ActiveCfg = Debug|Win32
+		{085E348C-B26D-4581-9150-105976F0B173}.Debug|x86.Build.0 = Debug|Win32
+		{085E348C-B26D-4581-9150-105976F0B173}.Release|x64.ActiveCfg = Release|x64
+		{085E348C-B26D-4581-9150-105976F0B173}.Release|x64.Build.0 = Release|x64
+		{085E348C-B26D-4581-9150-105976F0B173}.Release|x86.ActiveCfg = Release|Win32
+		{085E348C-B26D-4581-9150-105976F0B173}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

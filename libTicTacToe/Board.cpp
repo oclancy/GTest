@@ -13,7 +13,7 @@ namespace libTicTacToe
 	{
 		if (IsFinished()) return false;
 
-		if (SPACE == _current_state.at(position))
+		if (position < _current_state.size() && SPACE == _current_state.at(position))
 		{
 			_current_state[position] = token;
 

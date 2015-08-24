@@ -15,6 +15,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libTicTacToe.Test", "libTic
 		{C4DA119A-5EC6-484C-A361-C2CE109CDEF9} = {C4DA119A-5EC6-484C-A361-C2CE109CDEF9}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6396D8D-D58F-4A80-9358-954AE45F4A38}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

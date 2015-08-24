@@ -27,9 +27,10 @@ namespace libTicTacToe
 
 		char GetWinner() const { return _winner; };
 
-	private:
 		static const char SPACE = ' ';
-
+	
+	private:
+		
 		std::string _current_state;
 
 		bool _is_finished = false;

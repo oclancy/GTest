@@ -8,6 +8,10 @@ namespace libTicTacToe
 	/// </summary>
 	class CArtificialIntelligence
 	{
+	public:
+		typedef std::tuple<std::string, int> Move;
+		typedef std::vector<Move> Moves;
+
 	protected:
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CArtificialIntelligence"/> class.
@@ -26,8 +30,7 @@ namespace libTicTacToe
 		//iterations played
 		int _iterations;
 
-		typedef std::tuple<std::string, int> Move;
-		typedef std::vector<Move> Moves;
+
 
 		// move log per episode
 		/// <summary>

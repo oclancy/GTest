@@ -5,8 +5,12 @@
 
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Artificial Intelligence that implements the Sarsa algorithm
+	/// </summary>
 	class CSarsaIntelligence : public CArtificialIntelligence
 	{
+	private:
 		typedef std::tuple<std::string, int> StateAction;
 		//typedef std::tuple<StateAction, double> StateActionValue;
 
@@ -33,8 +37,17 @@ namespace libTicTacToe
 		//};
 
 		typedef std::vector<std::shared_ptr<StateActionValue>> StateActionValueVector;
+		
+		// the rate at which the AI learns
+		double _learning_rate = 0.1;
+		// the discount factor
+		double _discount_factor = 0.9;
+
+	protected:
 		// map of StateAction to 'StateAction
 		typedef std::map<StateAction, std::vector<std::shared_ptr<StateActionValue>>> Strategy;
+
+		double CalculateQValue(double existing_value, double reward) const;
 
 		// map of state to vector of action-values
 		Strategy _strategy;

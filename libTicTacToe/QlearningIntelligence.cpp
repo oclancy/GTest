@@ -5,6 +5,18 @@
 namespace libTicTacToe
 {
 	/// <summary>
+	/// Calculates the q value.
+	/// </summary>
+	/// <param name="existing_value">The existing_value.</param>
+	/// <param name="reward">The reward.</param>
+	/// <returns></returns>
+	double CQLearningIntelligence::CalculateQValue(double existing_value, double reward) const
+	{
+		//dReward = existing_value + _learning_rate * (dReward * _discount_factor - existing_value);
+		return  existing_value + _learning_rate * (reward * _discount_factor - existing_value);
+	}
+
+	/// <summary>
 	/// Selects the square.
 	/// </summary>
 	/// <param name="state">The state.</param>
@@ -92,8 +104,7 @@ namespace libTicTacToe
 						bFound = true;
 						auto existing_value = action_value->value;
 						// calculate
-						//dReward = existing_value + 0.1 * (dReward * 0.9 - existing_value);
-						action_value->value = existing_value + 0.1 * (dreward * 0.9 - existing_value);
+						action_value->value = CalculateQValue(existing_value, dreward);
 						//existing_value = value;
 						break;
 					}
@@ -101,16 +112,14 @@ namespace libTicTacToe
 
 				if (!bFound)
 				{
-					/*dReward = 0.1 * (dReward * 0.9);*/
-					auto value = 0.1 * (dreward * 0.9);
+					auto value = CalculateQValue(0, dreward);
 					iter->second.emplace_back(std::make_shared<ActionValue>(action, value));
 				}
 			}
 			else
 			{
 				ActionValueVector action_values;
-				//dReward = 0.1 * (dReward * 0.9);
-				auto value = 0.1 * (dreward * 0.9);
+				auto value = CalculateQValue(0, dreward);
 				action_values.push_back(std::make_shared<ActionValue>(action, value));
 				_strategy.emplace(state, action_values);
 			}

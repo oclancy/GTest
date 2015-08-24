@@ -27,16 +27,31 @@ namespace libTicTacToe
 
 		std::ofstream file(buffer, std::ios::out);
 
+		std::stringstream episode_count_out_string;
 		std::stringstream ai1_out_string;
 		std::stringstream ai2_out_string;
+		
+		ai1_out_string << "Episodes count: ";
+		for (size_t count = 0; count < ai1.size(); ++count)
+		{
+			episode_count_out_string << count * 100 << ",";
+		}
 
+		ai1_out_string << "Average reward AI_1: ";
 		for (auto reward : ai1)
+		{
 			ai1_out_string << reward << ",";
+		}
+
+		ai1_out_string << "Average reward AI_2: ";
 		for (auto reward : ai2)
+		{
 			ai2_out_string << reward << ",";
+		}
 
 		if (file.is_open())
 		{
+			file << episode_count_out_string.rdbuf() << std::endl;
 			file << ai1_out_string.rdbuf() << std::endl;
 			file << ai2_out_string.rdbuf() << std::endl;
 			file.close();

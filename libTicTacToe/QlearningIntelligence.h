@@ -2,6 +2,7 @@
 #include <map>
 #include <memory>
 #include "ArtificialIntelligence.h"
+
 namespace libTicTacToe
 {
 	/// <summary>
@@ -9,8 +10,7 @@ namespace libTicTacToe
 	/// </summary>
 	class CQLearningIntelligence : public CArtificialIntelligence
 	{
-	public:
-		
+	private:
 		/// <summary>
 		/// Stores action and value for a given state
 		/// </summary>
@@ -18,7 +18,9 @@ namespace libTicTacToe
 		{
 			ActionValue(int a, double v)
 				:action(a),
-				value(v) {}
+				 value(v)
+			{
+			}
 
 			int action;
 			double value;
@@ -26,10 +28,17 @@ namespace libTicTacToe
 
 		typedef std::vector<std::shared_ptr<ActionValue>> ActionValueVector;
 
-		typedef std::map<std::string, ActionValueVector> Strategy;
+		// the rate at which the AI learns
+		double _learning_rate = 0.1;
+		// the discount factor
+		double _discount_factor = 0.9;
 
+	protected:
+		typedef std::map<std::string, ActionValueVector> Strategy;
 		// map of state to vector of action-values
 		Strategy _strategy;
+
+		double CalculateQValue(double existing_value, double reward) const;
 
 	public:
 		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) override final;
@@ -40,5 +49,4 @@ namespace libTicTacToe
 
 		virtual void Save(const std::string& filename) override final;
 	};
-
 }

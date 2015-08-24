@@ -2,9 +2,12 @@
 
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Represents a game of tictactoe
+	/// Board is implemented as a string of 9 chars
+	/// </summary>
 	class CBoard
 	{
-
 	public:
 		CBoard() :_current_state(9, SPACE) {};
 
@@ -18,9 +21,9 @@ namespace libTicTacToe
 
 		bool Check();
 
-		bool IsFinished();
+		bool IsFinished()const;
 
-		int GetReward(char token);
+		int GetReward(char token)const;
 
 		char GetWinner() const { return _winner; };
 

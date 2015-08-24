@@ -48,6 +48,12 @@
     <ClInclude Include="RandomGuesser.h">
       <Filter>AI</Filter>
     </ClInclude>
+    <ClInclude Include="AutoPlayer.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ManualPlayer.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -65,9 +71,6 @@
     <ClCompile Include="Episode.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="QlearningIntelligence.cpp">
       <Filter>AI</Filter>
     </ClCompile>
@@ -79,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="play.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoPlayer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ManualPlayer.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

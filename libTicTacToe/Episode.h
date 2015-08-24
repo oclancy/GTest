@@ -3,6 +3,9 @@
 
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Runs one game of TicTacToe
+	/// </summary>
 	class CEpisode
 	{
 	public:

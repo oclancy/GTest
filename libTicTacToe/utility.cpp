@@ -10,10 +10,10 @@ namespace libTicTacToe
 {
 
 	/// <summary>
-	/// Saves the rewards per episodes.
+	/// Saves the rewards per episode to a file named with the current time.
 	/// </summary>
-	/// <param name="ai1">The ai1.</param>
-	/// <param name="ai2">The ai2.</param>
+	/// <param name="ai1">Ai1 average rewards.</param>
+	/// <param name="ai2">Ai2 average rewards.</param>
 	void SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2)
 	{
 		time_t rawtime;
@@ -43,7 +43,7 @@ namespace libTicTacToe
 		}
 		else
 		{
-			std::cout << "Unable to open file" << std::endl;
+			std::cout << "Unable to open file to persist average reward information." << std::endl;
 		}
 	}
 
@@ -54,7 +54,7 @@ namespace libTicTacToe
 	/// <param name="s">The s.</param>
 	/// <param name="delim">The delimiter.</param>
 	/// <param name="elems">The elems.</param>
-	/// <returns></returns>
+	/// <returns>A reference to a vestor of strings</returns>
 	std::vector<std::string>& Split(const std::string &s, char delim, std::vector<std::string> &elems) {
 		std::stringstream ss(s);
 		std::string item;
@@ -70,7 +70,7 @@ namespace libTicTacToe
 	/// </summary>
 	/// <param name="s">The s.</param>
 	/// <param name="delim">The delimiter.</param>
-	/// <returns></returns>
+	/// <returns>A vector of strings</returns>
 	std::vector<std::string> Split(const std::string &s, char delim) {
 		std::vector<std::string> elems;
 		Split(s, delim, elems);
@@ -78,16 +78,14 @@ namespace libTicTacToe
 	}
 
 	/// <summary>
-	/// Gets the artificial intelligence.
+	/// Gets the requested artificial intelligence.
 	/// </summary>
 	/// <param name="id">The identifier.</param>
-	/// <returns></returns>
+	/// <returns>A unique_ptr to a CArtificialIntelligence derived class</returns>
 	std::unique_ptr<CArtificialIntelligence> GetArtificialIntelligence(const char id)
 	{
 		switch (id)
 		{
-		case 'r':
-			return std::make_unique<CRandomGuesser>();
 		case 'q':
 			return std::make_unique<CQLearningIntelligence>();
 		case 's':
@@ -95,5 +93,18 @@ namespace libTicTacToe
 		default:
 			return std::make_unique<CRandomGuesser>();
 		}
+	}
+	
+	/// <summary>
+	/// Waits for any user input.
+	/// </summary>
+	void WaitForUser()
+	{
+		// wait - not optimal but cheapest to impl.
+#ifdef _WIN32
+		system("pause");
+#else
+		system("read");
+#endif 
 	}
 }

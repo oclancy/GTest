@@ -1,11 +1,19 @@
 #include "stdafx.h"
 #include <memory>
 #include "libTicTacToe.h"
-#include "Player.h"
 #include "Episode.h"
+#include "AutoPlayer.h"
 
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Enables traing of an AI.
+	/// Can select which ai to use for each player
+	/// Select number of traning iterations
+	/// After training:
+	/// opportunity is given to save training file for each AI
+	/// opportunity is given to save average reward plot for both AIs (as csv)
+	/// </summary>
 	void Train()
 	{
 		char choice;
@@ -34,7 +42,8 @@ namespace libTicTacToe
 		{
 			CEpisode::Play(player1, player2);
 
-			if(count % 100==0)
+			// store average reward after every 100 iterations
+			if(count >0 && count % 100 == 0)
 			{
 				ai1_average_rewards.push_back(ai1->GetAverageReward());
 				ai2_average_rewards.push_back(ai2->GetAverageReward());
@@ -48,11 +57,11 @@ namespace libTicTacToe
 		if (tolower(choice) == 'y')
 		{
 			std::string filename;
-			std::cout << "Enter filename player1:" << std::endl;
+			std::cout << "Enter filename for player1:" << std::endl;
 			std::cin >> filename;
 			ai1->Save(filename);
 			
-			std::cout << "Enter filename player2:" << std::endl;
+			std::cout << "Enter filename for player2:" << std::endl;
 			std::cin >> filename;
 			ai2->Save(filename);
 		}

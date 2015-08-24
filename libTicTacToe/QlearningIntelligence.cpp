@@ -8,11 +8,13 @@ namespace libTicTacToe
 	/// Selects the square.
 	/// </summary>
 	/// <param name="state">The state.</param>
-	/// <param name="availableSquares">The available squares.</param>
-	/// <returns></returns>
+	/// <param name="available_squares">The available_squares.</param>
+	/// <returns>
+	/// The selected square
+	/// </returns>
 	int CQLearningIntelligence::SelectSquare(const std::string state, const std::vector<int>& available_squares)
 	{
-		auto square = libTicTacToe::INVALID_SQUARE;
+		auto square = INVALID_SQUARE;
 		auto iter = _strategy.find(state);
 
 		if (iter != _strategy.end())
@@ -45,7 +47,7 @@ namespace libTicTacToe
 		}
 
 		// todo: could add exploration here and ignore selected square.
-		if (square == libTicTacToe::INVALID_SQUARE)
+		if (square == INVALID_SQUARE)
 		{
 			// no strategy so select random value from available
 			std::uniform_int_distribution<int> distribution(0, available_squares.size() - 1);
@@ -133,7 +135,7 @@ namespace libTicTacToe
 			while (!file.eof())
 			{
 				std::string line;
-				std::getline(file, line);
+				getline(file, line);
 				std::vector<std::string> splitline;
 				Split(line, ';', splitline);
 				if (splitline.size() > 0)
@@ -158,7 +160,7 @@ namespace libTicTacToe
 		}
 		else
 		{
-			std::cout << "Unable to open file" << std::endl;
+			std::cout << "Unable to open file to load training data" << std::endl;
 		}
 
 	}
@@ -186,7 +188,7 @@ namespace libTicTacToe
 		}
 		else
 		{
-			std::cout << "Unable to open file" << std::endl;
+			std::cout << "Unable to open file to persist training data" << std::endl;
 		}
 
 	}

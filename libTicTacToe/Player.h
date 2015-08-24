@@ -1,15 +1,25 @@
 #pragma once
 #include "Board.h"
-#include "ArtificialIntelligence.h"
+
 
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Abtsract base class of TicTacToe players
+	/// </summary>
 	class CPlayer
 	{
 	protected:
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CPlayer"/> class.
+		/// </summary>
+		/// <param name="token">The token.</param>
 		CPlayer(char token) :_token(token) {};
 
 	public:
+		/// <summary>
+		/// Finalizes an instance of the <see cref="CPlayer"/> class.
+		/// </summary>
 		virtual ~CPlayer()
 		{
 		}
@@ -17,37 +27,14 @@ namespace libTicTacToe
 		virtual void TakeTurn(CBoard& board) = 0;
 		virtual void Learn(int reward) = 0;
 
+		/// <summary>
+		/// Gets the token.
+		/// </summary>
+		/// <returns></returns>
 		char GetToken() const { return _token; };
 
 	protected:
-		char _token;
-	};
-
-	class CAutoPlayer : public CPlayer
-	{
-	public:
-		CAutoPlayer(char token, CArtificialIntelligence& ai)
-			: CPlayer(token), _ai(ai)
-		{}
-
-		void TakeTurn(CBoard& board) override final;
-		void Learn(int reward) override final;
-
-	private:
-		CArtificialIntelligence& _ai;
-	};
-
-	class CManualPlayer : public CPlayer
-	{
-	public:
-		CManualPlayer(char token)
-			: CPlayer(token)
-		{}
-
-		void TakeTurn(CBoard& board) override final;
-		void Learn(int reward) override final;
-
-
+		const char _token;
 	};
 
 }

@@ -3,9 +3,15 @@
 namespace libTicTacToe
 {
 
+	/// <summary>
+	/// Sets the square if available.
+	/// </summary>
+	/// <param name="token">The token.</param>
+	/// <param name="position">The position.</param>
+	/// <returns>Success or fail</returns>
 	bool CBoard::SetSquare(char token, int position)
 	{
-		if (_is_finished) return false;
+		if (IsFinished()) return false;
 
 		if (SPACE == _current_state.at(position))
 		{
@@ -19,32 +25,47 @@ namespace libTicTacToe
 		return false;
 	}
 
+	/// <summary>
+	/// Gets the available squares.
+	/// </summary>
+	/// <returns>The available squares</returns>
 	std::vector<int> CBoard::GetAvailableSquares() const
 	{
 		std::vector<int> availableSpaces;
-		auto index = 0;
-		for (auto c : _current_state)
+
+		if (!_is_finished)
 		{
-			if (c == ' ')
-				availableSpaces.push_back(index);
+			auto index = 0;
+			for (auto c : _current_state)
+			{
+				if (c == SPACE)
+					availableSpaces.push_back(index);
 
-			++index;
+				++index;
+			}
 		}
-
 		//RVO
 		return availableSpaces;
 	}
 
+	/// <summary>
+	/// Gets the state.
+	/// </summary>
+	/// <returns>The current state</returns>
 	std::string CBoard::GetState() const
 	{
 		return _current_state;
 	}
 
 
+	/// <summary>
+	/// Checks this instance to see if either there is a winner or if the board is still playable.
+	/// </summary>
+	/// <returns>True if there is a winner or the board is no longer playable</returns>
 	bool CBoard::Check()
 	{
 		if (_is_finished)
-			return _winner != SPACE;
+			return _is_finished;
 
 		// 1st row
 		auto sub = _current_state.substr(0, 3);
@@ -93,19 +114,26 @@ namespace libTicTacToe
 		return _is_finished;
 	}
 
-	bool CBoard::IsFinished()
+	/// <summary>
+	/// Determines whether this instance is finished. 
+	/// DOES NOT determine a stalemate
+	/// </summary>
+	/// <returns></returns>
+	bool CBoard::IsFinished() const
 	{
-		if (!_is_finished)
-			_is_finished = _current_state.find_first_not_of(SPACE) == std::string::npos;
-
 		return _is_finished;
 	}
 
-	int CBoard::GetReward(char token)
+	/// <summary>
+	/// Gets the reward.
+	/// </summary>
+	/// <param name="token">The token.</param>
+	/// <returns></returns>
+	int CBoard::GetReward(char token) const
 	{
 		if (!IsFinished())return 0;
-		if (_winner == token)return libTicTacToe::WIN;
-		if (_winner == SPACE)return libTicTacToe::DRAW;
-		return libTicTacToe::LOSE;
+		if (_winner == token)return WIN;
+		if (_winner == SPACE)return DRAW;
+		return LOSE;
 	}
 }

@@ -4,7 +4,7 @@
 namespace libTicTacToe
 {
 	/// <summary>
-	/// Abstract base class of ais
+	/// Abstract base class of AIs
 	/// </summary>
 	class CArtificialIntelligence
 	{
@@ -23,8 +23,17 @@ namespace libTicTacToe
 
 		// current average
 		double _average_reward;
-		//itereations played
+		//iterations played
 		int _iterations;
+
+		typedef std::tuple<std::string, int> Move;
+		typedef std::vector<Move> Moves;
+
+		// move log per episode
+		/// <summary>
+		/// The _moves
+		/// </summary>
+		Moves _movesInEpisode;
 
 	public:
 
@@ -38,7 +47,7 @@ namespace libTicTacToe
 		/// </summary>
 		/// <param name="state">The state.</param>
 		/// <param name="availableSquares">The available squares.</param>
-		/// <returns></returns>
+		/// <returns>The selected square</returns>
 		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) = 0;
 
 		/// <summary>
@@ -66,6 +75,10 @@ namespace libTicTacToe
 		double GetAverageReward() const { return _average_reward; };
 
 	protected:
+		/// <summary>
+		/// Updates the reward average.
+		/// </summary>
+		/// <param name="reward">The reward.</param>
 		void UpdateRewardAverage(double reward)
 		{
 			//update average

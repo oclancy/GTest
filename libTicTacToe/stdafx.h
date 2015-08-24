@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <tuple>
 
 #include "libTicTacToe.h"
 

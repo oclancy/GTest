@@ -4,10 +4,16 @@
 #include "ArtificialIntelligence.h"
 namespace libTicTacToe
 {
+	/// <summary>
+	/// Artificial Intelligence that implements the Q-Learning algorithm
+	/// </summary>
 	class CQLearningIntelligence : public CArtificialIntelligence
 	{
 	public:
-
+		
+		/// <summary>
+		/// Stores action and value for a given state
+		/// </summary>
 		struct ActionValue
 		{
 			ActionValue(int a, double v)
@@ -24,15 +30,6 @@ namespace libTicTacToe
 
 		// map of state to vector of action-values
 		Strategy _strategy;
-
-		typedef std::tuple<std::string, int> Move;
-		typedef std::vector<Move> Moves;
-
-		// move log per episode
-		/// <summary>
-		/// The _moves
-		/// </summary>
-		Moves _movesInEpisode;
 
 	public:
 		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) override final;

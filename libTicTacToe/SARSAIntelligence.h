@@ -39,12 +39,6 @@ namespace libTicTacToe
 		// map of state to vector of action-values
 		Strategy _strategy;
 
-		typedef std::tuple<std::string, int> Move;
-		typedef std::vector<Move> Moves;
-
-	protected:
-		std::vector<std::tuple<std::string, int>> _movesInEpisode;
-
 	public:
 		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) override final;
 

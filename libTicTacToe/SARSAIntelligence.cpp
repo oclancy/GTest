@@ -8,10 +8,10 @@ namespace libTicTacToe
 	/// </summary>
 	/// <param name="state">The state.</param>
 	/// <param name="availableSquares">The available squares.</param>
-	/// <returns></returns>
+	/// <returns>The selected square</returns>
 	int CSarsaIntelligence::SelectSquare(const std::string state, const std::vector<int>& available_squares)
 	{
-		auto square = libTicTacToe::INVALID_SQUARE;
+		auto square = INVALID_SQUARE;
 
 		std::vector<int> best_moves;
 		double action_max_value = 0;
@@ -52,7 +52,7 @@ namespace libTicTacToe
 		}
 
 		// todo: could add exploration here and ignore selected square.
-		if (square == libTicTacToe::INVALID_SQUARE)
+		if (square == INVALID_SQUARE)
 		{
 			// no strategy so select random value from available
 			std::uniform_int_distribution<int> distribution(0, available_squares.size() - 1);
@@ -185,7 +185,7 @@ namespace libTicTacToe
 		}
 		else
 		{
-			std::cout << "Unable to open file" << std::endl;
+			std::cout << "Unable to open file to load training data" << std::endl;
 		}
 
 	}
@@ -215,7 +215,7 @@ namespace libTicTacToe
 		}
 		else
 		{
-			std::cout << "Unable to open file" << std::endl;
+			std::cout << "Unable to open file to persist training data" << std::endl;
 		}
 
 	}

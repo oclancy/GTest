@@ -132,9 +132,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ArtificialIntelligence.h" />
+    <ClInclude Include="AutoPlayer.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Episode.h" />
     <ClInclude Include="libTicTacToe.h" />
+    <ClInclude Include="ManualPlayer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="QlearningIntelligence.h" />
     <ClInclude Include="RandomGuesser.h" />
@@ -142,9 +144,10 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AutoPlayer.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Episode.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ManualPlayer.cpp" />
     <ClCompile Include="QlearningIntelligence.cpp" />
     <ClCompile Include="RandomGuesser.cpp" />
     <ClCompile Include="SARSAIntelligence.cpp" />

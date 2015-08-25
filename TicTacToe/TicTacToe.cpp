@@ -24,20 +24,28 @@ int main(int argc, char* argv[])
 		std::cout << "2: Play" << std::endl;
 		std::cout << "3: Quit" << std::endl;
 
-		std::cin >> selection;
-
-		switch (selection)
+		if (std::cin >> selection)
 		{
-		case 1:
-			Train();
-			break;
-		case 2:
-			Play();
-			break;
-		case 3:
-			return 0;
-		default:
-			std::cout << "Invalid option:" << selection << std::endl;
+			switch (selection)
+			{
+			case 1:
+				Train();
+				break;
+			case 2:
+				Play();
+				break;
+			case 3:
+				return 0;
+			default:
+				std::cout << "Invalid option:" << selection << std::endl;
+				WaitForUser();
+			}
+		}
+		else
+		{
+			std::cout << "Please enter a valid integer" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			WaitForUser();
 		}
 	} while (true);

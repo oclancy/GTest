@@ -69,7 +69,7 @@ namespace libTicTacToeTest
 			for (unsigned int index = 0;index < 9;++index )
 			{
 				Assert::IsTrue(testBoard.SetSquare(_draw_board[index], index));
-				Assert::AreEqual(8-index, testBoard.GetAvailableSquares().size());
+				Assert::AreEqual(size_t(8-index), testBoard.GetAvailableSquares().size());
 			}
 		}
 

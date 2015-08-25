@@ -53,7 +53,7 @@ namespace libTicTacToe
 			}
 			else if (best_moves.size() > 1)
 			{
-				std::uniform_int_distribution<int> distribution(0, best_moves.size() - 1);
+				std::uniform_int_distribution<size_t> distribution(0, best_moves.size() - 1);
 				square = best_moves[distribution(_generator)];
 			}
 		}
@@ -62,7 +62,7 @@ namespace libTicTacToe
 		if (square == INVALID_SQUARE)
 		{
 			// no strategy so select random value from available
-			std::uniform_int_distribution<int> distribution(0, available_squares.size() - 1);
+			std::uniform_int_distribution<size_t> distribution(0, available_squares.size() - 1);
 			square = available_squares[distribution(_generator)];
 		}
 

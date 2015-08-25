@@ -173,7 +173,9 @@
     <ClCompile Include="When_Using_CAutoPlayer.cpp" />
     <ClCompile Include="When_Using_CBoard.cpp" />
     <ClCompile Include="When_Using_CQLearningIntelligence.cpp" />
+    <ClCompile Include="When_Using_CRandomGuesser.cpp" />
     <ClCompile Include="When_Using_SarsaIntelligence.cpp" />
+    <ClCompile Include="When_Using_Save_Reward_Averages.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

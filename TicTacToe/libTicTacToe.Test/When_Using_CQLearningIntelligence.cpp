@@ -104,7 +104,7 @@ namespace libTicTacToeTest
 
 			Assert::AreEqual(double(100), test_instance.GetAverageReward());
 
-			Assert::AreEqual(4, test_instance.SelectSquare(std::string("xo       "), std::vector<int>{2, 3, 4, 5, 6, 7, 8}));
+			Assert::AreEqual(unsigned int(4), test_instance.SelectSquare(std::string("xo       "), std::vector<unsigned int>{2, 3, 4, 5, 6, 7, 8}));
 
 			moves->push_back(std::make_tuple("         ", 0));
 			moves->push_back(std::make_tuple("xo       ", 4));
@@ -179,7 +179,7 @@ namespace libTicTacToeTest
 				action_value = action_values[0];
 				Assert::AreEqual(double(9), action_value->value);
 				Assert::AreEqual(6, action_value->action);
-				Assert::AreEqual(4, test_file_load_instance.SelectSquare(std::string("xo       "), std::vector<int>{2, 3, 4, 5, 6, 7, 8}));
+				Assert::AreEqual(unsigned int(4), test_file_load_instance.SelectSquare(std::string("xo       "), std::vector<unsigned int>{2, 3, 4, 5, 6, 7, 8}));
 			}
 		}
 

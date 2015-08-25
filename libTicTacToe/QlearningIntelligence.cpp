@@ -24,7 +24,7 @@ namespace libTicTacToe
 	/// <returns>
 	/// The selected square
 	/// </returns>
-	int CQLearningIntelligence::SelectSquare(const std::string state, const std::vector<int>& available_squares)
+	unsigned int CQLearningIntelligence::SelectSquare(const std::string state, const std::vector<unsigned int>& available_squares)
 	{
 		auto square = INVALID_SQUARE;
 		auto iter = _strategy.find(state);

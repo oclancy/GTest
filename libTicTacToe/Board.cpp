@@ -9,7 +9,7 @@ namespace libTicTacToe
 	/// <param name="token">The token.</param>
 	/// <param name="position">The position.</param>
 	/// <returns>Success or fail</returns>
-	bool CBoard::SetSquare(char token, int position)
+	bool CBoard::SetSquare(char token, unsigned int position)
 	{
 		if (IsFinished()) return false;
 
@@ -29,9 +29,9 @@ namespace libTicTacToe
 	/// Gets the available squares.
 	/// </summary>
 	/// <returns>The available squares</returns>
-	std::vector<int> CBoard::GetAvailableSquares() const
+	std::vector<unsigned int> CBoard::GetAvailableSquares() const
 	{
-		std::vector<int> availableSpaces;
+		std::vector<unsigned int> availableSpaces;
 
 		if (!_is_finished)
 		{

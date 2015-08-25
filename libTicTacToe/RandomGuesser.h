@@ -9,7 +9,7 @@ namespace libTicTacToe
 	class CRandomGuesser : public CArtificialIntelligence
 	{
 	public:
-		virtual int SelectSquare(const std::string state, const std::vector<int>& availableSquares) override final;
+		virtual unsigned int SelectSquare(const std::string state, const std::vector<unsigned int>& availableSquares) override final;
 
 		virtual void UpdateStrategy(int reward) override final;
 

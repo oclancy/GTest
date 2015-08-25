@@ -51,7 +51,7 @@ namespace libTicTacToe
 		/// <param name="state">The state.</param>
 		/// <param name="availableSquares">The available squares.</param>
 		/// <returns>The selected square</returns>
-		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) = 0;
+		virtual unsigned int SelectSquare(const std::string state, const std::vector<unsigned int>& available_squares) = 0;
 
 		/// <summary>
 		/// Updates the strategy.

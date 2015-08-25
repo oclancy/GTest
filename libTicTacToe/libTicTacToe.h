@@ -7,7 +7,7 @@ namespace libTicTacToe
 	/// <summary>
 	/// Value of an invalid square
 	/// </summary>
-	const int INVALID_SQUARE = -1;
+	const unsigned int INVALID_SQUARE = -1;
 
 	/// <summary>
 	/// The win value
@@ -50,7 +50,7 @@ namespace libTicTacToe
 	/// <summary>
 	/// Persist the current stored rewards-per-episode values to disk for each ai. (Training mode)
 	/// </summary>
-	void SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2);
+	std::string SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2);
 
 	/// <summary>
 	/// Waits for user input

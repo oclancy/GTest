@@ -167,7 +167,7 @@ namespace libTicTacToeTest
 				Assert::AreEqual(6, action_state_value->action);
 				Assert::AreEqual(std::string("xo xo    "), action_state_value->state);
 
-				Assert::AreEqual(4, test_file_load_instance.SelectSquare(std::string("xo       "), std::vector<int>{2, 3, 4, 5, 6, 7, 8}));
+				Assert::AreEqual(unsigned (4), test_file_load_instance.SelectSquare(std::string("xo       "), std::vector<unsigned int>{2, 3, 4, 5, 6, 7, 8}));
 			}
 		}
 

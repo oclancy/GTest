@@ -10,11 +10,12 @@ namespace libTicTacToe
 {
 
 	/// <summary>
-	/// Saves the rewards per episode to a file named with the current time.
+	/// Saves the rewards per episode for each AI to a file named with the current time.
 	/// </summary>
 	/// <param name="ai1">Ai1 average rewards.</param>
 	/// <param name="ai2">Ai2 average rewards.</param>
-	void SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2)
+	/// <returns>The output filename.</returns>
+	std::string SaveRewardsPerEpisodes(const std::vector<double> ai1, const std::vector<double> ai2)
 	{
 		time_t rawtime;
 		struct tm timeinfo;
@@ -31,8 +32,8 @@ namespace libTicTacToe
 		std::stringstream ai1_out_string;
 		std::stringstream ai2_out_string;
 		
-		ai1_out_string << "Episodes count: ";
-		for (size_t count = 0; count < ai1.size(); ++count)
+		episode_count_out_string << "Episodes count: ";
+		for (size_t count = 1; count <= ai1.size(); ++count)
 		{
 			episode_count_out_string << count * 100 << ",";
 		}
@@ -43,7 +44,7 @@ namespace libTicTacToe
 			ai1_out_string << reward << ",";
 		}
 
-		ai1_out_string << "Average reward AI_2: ";
+		ai2_out_string << "Average reward AI_2: ";
 		for (auto reward : ai2)
 		{
 			ai2_out_string << reward << ",";
@@ -55,10 +56,12 @@ namespace libTicTacToe
 			file << ai1_out_string.rdbuf() << std::endl;
 			file << ai2_out_string.rdbuf() << std::endl;
 			file.close();
+			return std::string(buffer);
 		}
 		else
 		{
 			std::cout << "Unable to open file to persist average reward information." << std::endl;
+			return std::string();
 		}
 	}
 

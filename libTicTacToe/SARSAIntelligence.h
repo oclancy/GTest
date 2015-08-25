@@ -42,7 +42,7 @@ namespace libTicTacToe
 		Strategy _strategy;
 
 	public:
-		virtual int SelectSquare(const std::string state, const std::vector<int>& available_squares) override final;
+		virtual unsigned int SelectSquare(const std::string state, const std::vector<unsigned int>& available_squares) override final;
 
 		virtual void UpdateStrategy(int reward) override final;
 

@@ -35,5 +35,11 @@
     <ClCompile Include="When_Using_CAutoPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="When_Using_CRandomGuesser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="When_Using_Save_Reward_Averages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

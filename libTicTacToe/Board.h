@@ -19,9 +19,9 @@ namespace libTicTacToe
 		/// </summary>
 		~CBoard() {};
 
-		bool SetSquare(char token, int position);
+		bool SetSquare(char token, unsigned int position);
 
-		std::vector<int> GetAvailableSquares() const;
+		std::vector<unsigned int> GetAvailableSquares() const;
 
 		std::string GetState() const;
 

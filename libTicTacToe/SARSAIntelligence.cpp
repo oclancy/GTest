@@ -20,7 +20,7 @@ namespace libTicTacToe
 	/// <param name="state">The state.</param>
 	/// <param name="availableSquares">The available squares.</param>
 	/// <returns>The selected square</returns>
-	int CSarsaIntelligence::SelectSquare(const std::string state, const std::vector<int>& available_squares)
+	unsigned int CSarsaIntelligence::SelectSquare(const std::string state, const std::vector<unsigned int>& available_squares)
 	{
 		auto square = INVALID_SQUARE;
 
